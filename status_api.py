@@ -81,7 +81,7 @@ class Handler(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    server = ThreadingHTTPServer(("10.0.2.17", 9090), Handler)
+    server = ThreadingHTTPServer(("0.0.0.0", 9090), Handler)
     try:
         server.serve_forever()
     except KeyboardInterrupt:
