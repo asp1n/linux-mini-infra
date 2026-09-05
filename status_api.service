@@ -1,0 +1,12 @@
+[Unit]
+Description=Disk usage and free ram monitoring service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /opt/status-api/prod/status_api.py
+Restart=on-failure
+RestartSec=100ms
+User=svc-status
+
+[Install]
+WantedBy=multi-user.target
