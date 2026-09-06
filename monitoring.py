@@ -40,16 +40,21 @@ monitoring = Monitoring(
     timestamp=datetime.fromisoformat(data["timestamp"]),
 )
 
-print(monitoring.timestamp.strftime("%x %X"))
 if monitoring.disk_usage_percent > DISK_USAGE_THRESHOLD:
     print(
-        f"CRITICAL: A disk free space is running out. Disk usage: {monitoring.disk_usage_percent}%"
+        f"{monitoring.timestamp.strftime('%x %X')}: "
+        f"CRITICAL: A disk free space is running out. "
+        f"Disk usage: {monitoring.disk_usage_percent}%"
     )
 elif monitoring.ram_free_mb < RAM_FREE_THRESHOLD:
     print(
-        f"CRITICAL: A RAM free space is running out. Remaining: {monitoring.ram_free_mb} MB"
+        f"{monitoring.timestamp.strftime('%x %X')}: "
+        f"CRITICAL: A RAM free space is running out. "
+        f"Remaining: {monitoring.ram_free_mb} MB"
     )
 else:
     print(
-        f"OK: All is good.\nDisk usage: {monitoring.disk_usage_percent}%\nRemainig RAM: {monitoring.ram_free_mb} MB"
+        f"{monitoring.timestamp.strftime('%x %X')}: "
+        f"OK: All is good. Disk usage: {monitoring.disk_usage_percent}%. "
+        f"Remainig RAM: {monitoring.ram_free_mb} MB"
     )
